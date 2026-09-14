@@ -14,7 +14,7 @@ def create_movie_session(
     )
 
 
-def get_movies_session(session_date: str = "") -> list[MovieSession]:
+def get_movies_sessions(session_date: str = "") -> list[MovieSession]:
     if session_date:
         return MovieSession.objects.filter(
             show_time=datetime.strptime(session_date, "%Y-%m-%d")
