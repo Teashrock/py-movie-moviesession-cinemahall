@@ -5,7 +5,7 @@ def get_movies(
         genres_ids: list = [],
         actors_ids: list = []
 ) -> list:
-    movies = Movie.query.all()
+    movies = Movie.objects.all()
     if not genres_ids and not actors_ids:
         return movies
     if genres_ids and actors_ids:
@@ -17,7 +17,7 @@ def get_movies(
 
 
 def get_movie_by_id(movie_id: int) -> Movie:
-    return Movie.query.all()[movie_id]
+    return Movie.objects.all()[movie_id]
 
 
 def create_movie(
