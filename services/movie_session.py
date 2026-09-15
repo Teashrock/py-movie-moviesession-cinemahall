@@ -6,13 +6,14 @@ def create_movie_session(
         movie_show_time: datetime,
         movie_id: int,
         cinema_hall_id: int
-) -> None:
+) -> MovieSession:
     session = MovieSession.objects.create(
         show_time=movie_show_time,
         cinema_hall=CinemaHall.objects.get(id=cinema_hall_id),
-        movie_id=Movie.objects.get(id=movie_id)
+        movie_id=movie_id
     )
     session.save()
+    return session
 
 
 def get_movies_sessions(session_date: str = "") -> list[MovieSession]:
