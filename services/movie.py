@@ -9,7 +9,11 @@ def get_movies(
     if not genres_ids and not actors_ids:
         return movies
     if genres_ids and actors_ids:
-        return movies.filter(genres__id__in=genres_ids).filter(actors__id__in=actors_ids).all()
+        return movies.filter(
+            genres__id__in=genres_ids
+        ).filter(
+            actors__id__in=actors_ids
+        ).all()
     if genres_ids:
         return movies.filter(genres__id__in=genres_ids).all()
     if actors_ids:
