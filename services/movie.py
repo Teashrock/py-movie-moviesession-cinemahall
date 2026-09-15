@@ -23,15 +23,15 @@ def get_movie_by_id(movie_id: int) -> Movie:
 def create_movie(
         movie_title: str,
         movie_description: str,
-        genre_ids: list = [],
+        genres_ids: list = [],
         actors_ids: list = []
 ) -> Movie:
     movie = Movie.objects.create(
         title=movie_title,
         description=movie_description
     )
-    if genre_ids:
-        movie.genres.set(genre_ids)
+    if genres_ids:
+        movie.genres.set(genres_ids)
     if actors_ids:
         movie.actors.set(actors_ids)
     movie.save()

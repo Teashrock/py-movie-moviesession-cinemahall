@@ -24,8 +24,8 @@ def get_movies_sessions(session_date: str = "") -> list[MovieSession]:
     return MovieSession.objects.all()
 
 
-def get_movie_session_by_id(movie_id: int) -> MovieSession:
-    return MovieSession.objects.get(id=movie_id)
+def get_movie_session_by_id(movie_session_id: int) -> MovieSession:
+    return MovieSession.objects.get(id=movie_session_id)
 
 
 def update_movie_session(
@@ -34,11 +34,14 @@ def update_movie_session(
         movie_id: int = None,
         cinema_hall_id: int = None
 ) -> None:
-    MovieSession.objects.filter(id=session_id).update(
-        show_time=show_time,
-        movie_id=movie_id,
-        cinema_hall=cinema_hall_id
-    )
+    update_dict = {}
+    if show_time:
+        update_dict["show_time"] = show_time
+    if movie_id:
+        update_dict["movie_id"] = movie_id
+    if cinema_hall_id:
+        update_dict["cinema_hall_id"] = cinema_hall_id
+    MovieSession.objects.filter(id=session_id).update(**update_dict)
 
 
 def delete_movie_session_by_id(session_id: int) -> None:
