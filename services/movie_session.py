@@ -9,7 +9,7 @@ def create_movie_session(
 ) -> MovieSession:
     session = MovieSession.objects.create(
         show_time=movie_show_time,
-        cinema_hall=CinemaHall.objects.get(id=cinema_hall_id),
+        cinema_hall_id=cinema_hall_id,
         movie_id=movie_id
     )
     session.save()
